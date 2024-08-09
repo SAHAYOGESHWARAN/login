@@ -1,23 +1,25 @@
 const express = require('express');
-const pasth = require("path");
+const path = require('path');
 const app = express();
-const crypt = require("bcrypt");
 
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
 
-// use ejs as the viw engine
-app.use('view engine','ejs')
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));
 
-app.get("/",(req,res) => {
+// Route to render the login page
+app.get("/", (req, res) => {
     res.render("login");
 });
 
-app.get("/signup", (req,res) => {
+// Route to render the signup page
+app.get("/signup", (req, res) => {
     res.render("signup");
-})
+});
 
-
-
-const port = 2000
+// Start the server on port 3000
+const port = 3000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
+    console.log(`Server is running on http://localhost:${port}`);
+});
